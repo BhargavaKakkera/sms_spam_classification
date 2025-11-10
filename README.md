@@ -37,26 +37,4 @@ The deep learning model was trained and evaluated in **Google Colab** (notebook)
 
 ---
 
-## 🗂️ Project Structure
-
---- 
-sms_spam_classification/
-│
-├── spam.csv                       # Dataset
-│
-├── models/                        # Saved models
-│   ├── Random_Forest_model.pkl
-│   └── Vectorizer.pkl
-│
-├── notebooks/                     # Jupyter notebook
-│   └── spam1.ipynb
-│
-├── src/                           # Core Python scripts
-│   ├── data_transformation.py
-│   ├── model_trainer.py
-│   └── predict_pipeline.py
-│
-├── requirements.txt               # Dependencies
-└── README.md
----
 
