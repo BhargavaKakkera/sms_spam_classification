@@ -30,14 +30,14 @@ class ModelTrainer:
         self.config = ModelTrainerConfig()
 
     def initiate_model_trainer(self, train_array, test_array):
-        print("🚀 Starting model training")
+        print(" Starting model training")
         overall_start = time.time()
 
         try:
             X_train, y_train = train_array[:, :-1], train_array[:, -1]
             X_test, y_test = test_array[:, :-1], test_array[:, -1]
 
-            # ✅ Base models
+            #  Base models
             models = {
                 "Logistic Regression": LogisticRegression(max_iter=3000, random_state=42),
                 "Multinomial NB": MultinomialNB(),
@@ -45,7 +45,7 @@ class ModelTrainer:
                 "Random Forest": RandomForestClassifier(random_state=42)
             }
 
-            # ✅ Parameter grids (as used in Colab)
+            #  Parameter grids (as used in Colab)
             param_grids = {
                 "Logistic Regression": {
                     "C": [0.1, 1, 10],
@@ -75,9 +75,9 @@ class ModelTrainer:
 
             cv = StratifiedKFold(n_splits=3, shuffle=True, random_state=42)
 
-            # ✅ Tune & evaluate each model
+            #  Tune & evaluate each model
             for name, model in models.items():
-                print(f"\n🔍 Tuning {name}...")
+                print(f"\n Tuning {name}...")
                 start_time = time.time()
 
                 grid = GridSearchCV(
@@ -107,27 +107,27 @@ class ModelTrainer:
                 })
 
                 print(f"[RESULT] {name}: Acc={acc:.4f}, Prec={prec:.4f}, Rec={rec:.4f}, F1={f1:.4f}")
-                print(f"⏱️ Time taken: {(time.time() - start_time):.2f} sec")
-                print(f"✅ Best {name} params: {grid.best_params_}")
+                print(f"⏱ Time taken: {(time.time() - start_time):.2f} sec")
+                print(f" Best {name} params: {grid.best_params_}")
 
                 if f1 > best_f1:
                     best_f1, best_model, best_name = f1, best_estimator, name
 
-            # ✅ Display results
+            #  Display results
             df_results = pd.DataFrame(results).sort_values(by="F1-score", ascending=False).reset_index(drop=True)
-            print("\n🏆 [SUMMARY] Model Performance (sorted by F1):\n", df_results)
+            print("\n [SUMMARY] Model Performance (sorted by F1):\n", df_results)
 
-            # ✅ Save best model (unique filename per run)
+            #  Save best model (unique filename per run)
             os.makedirs(self.config.model_dir, exist_ok=True)
             save_path = os.path.join(self.config.model_dir, f"{best_name.replace(' ', '_')}_model.pkl")
             joblib.dump(best_model, save_path)
-            print(f"\n💾 Saved best model: {best_name} (F1={best_f1:.4f}) → {save_path}")
+            print(f"\n Saved best model: {best_name} (F1={best_f1:.4f}) → {save_path}")
 
             total_time = (time.time() - overall_start) / 60
-            print(f"\n✅ [DONE] Total training time: {total_time:.2f} minutes")
+            print(f"\n [DONE] Total training time: {total_time:.2f} minutes")
 
         except Exception as e:
-            print("❌ Error during model training:", str(e))
+            print(" Error during model training:", str(e))
 
 
 if __name__ == "__main__":
@@ -143,5 +143,5 @@ if __name__ == "__main__":
 
     except Exception as e:
         import traceback
-        print("❌ Model training pipeline failed:")
+        print(" Model training pipeline failed:")
         traceback.print_exc()
