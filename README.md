@@ -41,7 +41,9 @@ Saved models and vectorizers for local prediction
 
 
 
-###  Project Structure
+### 🗂️ Project Structure
+
+
 
 
 sms_spam_classification/
@@ -62,4 +64,5 @@ sms_spam_classification/
 │
 ├── requirements.txt               # Dependencies
 └── README.md
+
 
