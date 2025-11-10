@@ -46,19 +46,20 @@ Saved models and vectorizers for local prediction
 
 sms_spam_classification/
 │
-├── spam.csv # Dataset
+├── spam.csv                       # Dataset
 │
-├── models/ # Saved models
-│ ├── Random_Forest_model.pkl
-│ └── Vectorizer.pkl
+├── models/                        # Saved models
+│   ├── Random_Forest_model.pkl
+│   └── Vectorizer.pkl
 │
-├── notebooks/ # Jupyter notebook
-│ └── spam1.ipynb
+├── notebooks/                     # Jupyter notebook
+│   └── spam1.ipynb
 │
-├── src/ # Core Python scripts
-│ ├── data_transformation.py
-│ ├── model_trainer.py
-│ └── predict_pipeline.py
+├── src/                           # Core Python scripts
+│   ├── data_transformation.py
+│   ├── model_trainer.py
+│   └── predict_pipeline.py
 │
-├── requirements.txt # Dependencies
+├── requirements.txt               # Dependencies
 └── README.md
+
